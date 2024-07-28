@@ -1,0 +1,11 @@
+For application.properties if you add
+
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=jianzhong.heng@gmail.com
+spring.mail.password=awkf rdiz hlor guhv
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+spring.mail.properties.mail.smtp.starttls.required: false
+spring.mail.properties.mail.smtp.ssl.enable: true  <  adding these will cause error where smtp server not found
+spring.mail.test-connection: true                  <  adding these will cause error where smtp server not found 

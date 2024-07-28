@@ -1,0 +1,121 @@
+/* styles.css */
+.normalPHead {
+    font-size: 50px;
+    text-align: center;
+  }
+  
+  /* Small screens (phones) */
+  @media (max-width: 576px) {
+    .normalPHead {
+      font-size: 35px;
+      text-align: center;
+    }
+  }
+  
+  /* Medium screens (tablets) */
+  @media (min-width: 577px) and (max-width: 992px) {
+    .normalPHead {
+      font-size: 40px;
+      text-align: center;
+    }
+  }
+  
+  /* Large screens (desktops) */
+  @media (min-width: 993px) {
+    .normalPHead {
+      font-size: 50px;
+      text-align: center;
+    }
+  }
+
+
+/* styles.css */
+.normalPSection {
+  font-size: 30px;
+
+}
+
+/* Small screens (phones) */
+@media (max-width: 576px) {
+  .normalPSection {
+    font-size: 20px;
+
+  }
+}
+
+/* Medium screens (tablets) */
+@media (min-width: 577px) and (max-width: 992px) {
+  .normalPSection {
+    font-size: 28px;
+
+  }
+}
+
+/* Large screens (desktops) */
+@media (min-width: 993px) {
+  .normalPSection {
+    font-size: 30px;
+  }
+}
+
+
+/* styles.css */
+.normalPEdwinSection {
+  font-size: 20px;
+
+}
+
+/* Small screens (phones) */
+@media (max-width: 576px) {
+  .normalPEdwinSection {
+    font-size: 20px;
+
+  }
+}
+
+/* Medium screens (tablets) */
+@media (min-width: 577px) and (max-width: 992px) {
+  .normalPEdwinSection {
+    font-size: 20px;
+
+  }
+}
+
+/* Large screens (desktops) */
+@media (min-width: 993px) {
+  .normalPEdwinSection {
+    font-size: 20px;
+  }
+}
+
+
+/* styles.css */
+.normalWhyChooseUs {
+  font-size: 40px;
+
+}
+
+/* Small screens (phones) */
+@media (max-width: 576px) {
+  .normalWhyChooseUs {
+    font-size: 70px;
+
+  }
+}
+
+/* Medium screens (tablets) */
+@media (min-width: 577px) and (max-width: 992px) {
+  .normalWhyChooseUs {
+    font-size: 70px;
+
+  }
+}
+
+/* Large screens (desktops) */
+@media (min-width: 993px) {
+  .normalWhyChooseUs {
+    font-size: 70px;
+  }
+}
+
+

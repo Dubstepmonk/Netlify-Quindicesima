@@ -1,0 +1,54 @@
+/* styles.css */
+.normal {
+    width: 50px;
+    height: 50px;
+  }
+  
+  /* Small screens (phones) */
+  @media (max-width: 576px) {
+    .normal {
+        width: 30px;
+        height: 30px;
+    }
+  }
+  
+  /* Medium screens (tablets) */
+  @media (min-width: 577px) and (max-width: 992px) {
+    .normal {
+        width: 40px;
+        height: 40px;
+    }
+  }
+  
+  /* Large screens (desktops) */
+  @media (min-width: 993px) {
+    .normal {
+        width: 50px;
+        height: 50px;
+    }
+  }
+
+  .pNormal{
+    font-size: 22px;
+  }
+
+ /* Small screens (phones) */
+ @media (max-width: 576px) {
+    .pNormal {
+      font-size: 17px;
+    }
+  }
+  
+  /* Medium screens (tablets) */
+  @media (min-width: 577px) and (max-width: 992px) {
+    .pNormal {
+      font-size: 18px;
+    }
+  }
+  
+  /* Large screens (desktops) */
+  @media (min-width: 993px) {
+    .pNormal {
+      font-size: 20px;
+    }
+  }

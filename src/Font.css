@@ -1,0 +1,26 @@
+
+@font-face { 
+    font-family: 'Edwin'; 
+    src: 
+        url('resource/Edwin-main/Edwin-main/Edwin-Bold.otf')  
+        format('opentype'); 
+    font-weight: bold; 
+
+} 
+
+@font-face {
+    font-family: 'Edwin';
+    font-style: normal;
+    font-weight: normal;
+    src: url("resource/Edwin-main/Edwin-main/Edwin-Roman.otf") format("opentype");
+}
+
+p {
+    font-family: 'Edwin';
+    font-style: normal;
+}
+
+b {
+    font-family: 'Edwin';
+    font-style: normal;
+}

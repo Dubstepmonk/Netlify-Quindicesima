@@ -48,7 +48,7 @@ public class EmailService {
 				MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
 				message.setTo(person.getEmail());
 				message.setSubject("Registration Received");
-				message.setFrom("jianzhong.heng@gmail.com"); // could be parameterized...
+				message.setFrom("jianzhong.heng@gmail.com"); // could be parameterized... sender should be Quindicesima email
 				Map model = new HashMap();
 				String upperCaseFirstName= person.getFirstName().toUpperCase();
 				String modifiedString = upperCaseFirstName.replace("", " ").trim() + "!";
@@ -61,5 +61,27 @@ public class EmailService {
 		};
 		 this.mailSender.send(preparator);
 		 System.out.println("Email successfully sent.");
+		 
+		 
+		 //2nd email from quindicesima email to Quindicesima email detailing the User particulars
+		 MimeMessagePreparator preparator2 = new MimeMessagePreparator() {
+				@Override
+				public void prepare(MimeMessage mimeMessage) throws Exception {
+					MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
+					message.setTo("jianzhong.heng@gmail.com"); //Quindicesima email so it receives the user details
+					message.setSubject("Booking Trial User Detail");
+					message.setFrom("dubstepmonk97@gmail.com"); //Should be Quindicesima 2nd email
+					Map model = new HashMap();
+					String upperCaseFirstName= person.getFirstName().toUpperCase();
+					String modifiedString = upperCaseFirstName.replace("", " ").trim() + "!";
+					model.put("firstname", modifiedString);
+					String text = "Name: " + person.getFirstName() + person.getLastName()  + " Contact No: " + person.getContactNumber() + " Email: " + person.getEmail() ;
+					message.setText(text, true);
+				}
+
+			};
+		 this.mailSender.send(preparator2);
+		 
+		 
 	}
 }

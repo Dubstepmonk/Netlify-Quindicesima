@@ -11,7 +11,7 @@ import backgroundClass from "./resource/musictheory1.jpg";
 import "./ButtonHover.css"
 
 function BookTrial() {
-  const API_URL = "https://quindicesimabackend-latest.onrender.com/booktrial";
+  const API_URL = "https://quindicesimabackend-latest.onrender.com";
   const [value, setValue] = useState("+65");
   const handleChange = (newValue) => {
     setValue(newValue);

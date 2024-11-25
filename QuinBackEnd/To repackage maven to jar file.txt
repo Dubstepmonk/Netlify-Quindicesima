@@ -1,0 +1,1 @@
+mvn package -DskipTests   < this is to skip the tests if not the test will fail and cannot output a jar file

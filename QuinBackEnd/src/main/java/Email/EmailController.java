@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import Model.Person;
 @Controller
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://quindicesima.com")
 public class EmailController {
     @Autowired
     EmailService emailService;

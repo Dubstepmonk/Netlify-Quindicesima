@@ -39,6 +39,8 @@ public class EmailService {
     
 	public void sendEmail(Person person) {
 		VelocityEngine velocityEngine = new VelocityEngine();
+		velocityEngine.setProperty("resource.loader", "classpath");
+		velocityEngine.setProperty("classpath.resource.loader.class", "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
 		velocityEngine.init();
 		VelocityContext context = new VelocityContext();
 		
@@ -53,8 +55,13 @@ public class EmailService {
 				String upperCaseFirstName= person.getFirstName().toUpperCase();
 				String modifiedString = upperCaseFirstName.replace("", " ").trim() + "!";
 				model.put("firstname", modifiedString);
+				//Initially is this resource path for local host
+				//String text = VelocityEngineUtils.mergeTemplateIntoString(velocityEngine,
+				//"src/main/resources/registration-confirmation.vm", model);
+				
+				//Testing this resource path for hosting on Render
 				String text = VelocityEngineUtils.mergeTemplateIntoString(velocityEngine,
-						"src/main/resources/registration-confirmation.vm", model);
+				        "templates/registration-confirmation.vm", model);
 				message.setText(text, true);
 			}
 

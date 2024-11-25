@@ -239,7 +239,7 @@ function Home() {
 </AnimatedOnScroll>
 <Footer></Footer>
 {/* <ResponsiveTypography>THIS IS SPARTA!!!</ResponsiveTypography> */}
-<a aria-label="Chat on WhatsApp" href="https://wa.me/+6591124691?text=Hi%2C%20I%20am%20interested%20in%20the%20free%20trial%20lesson%20by%20Quindicesima%21"> <img alt="Chat on WhatsApp" src={whatsapplogo} style={{position:"fixed", bottom:5,right:5}} /></a>
+<a aria-label="Chat on WhatsApp" href="https://wa.me/+6586319188?text=Hi%2C%20I%20am%20interested%20in%20the%20free%20trial%20lesson%20by%20Quindicesima%21"> <img alt="Chat on WhatsApp" src={whatsapplogo} style={{position:"fixed", bottom:5,right:5}} /></a>
     </div>
     
   );

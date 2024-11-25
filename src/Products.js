@@ -96,7 +96,7 @@ function Products() {
 </Grid>
     </Grid>
     <Footer></Footer>
-    <a aria-label="Chat on WhatsApp" href="https://wa.me/+6591124691?text=Hi%2C%20I%20would%20like%20to%20find%20out%20more%20about%20the%20products%20sold%20by%20Quindicesima%21"> <img alt="Chat on WhatsApp" src={whatsapplogo} style={{position:"fixed", bottom:5,right:5}} /></a>
+    <a aria-label="Chat on WhatsApp" href="https://wa.me/+6586319188?text=Hi%2C%20I%20would%20like%20to%20find%20out%20more%20about%20the%20products%20sold%20by%20Quindicesima%21"> <img alt="Chat on WhatsApp" src={whatsapplogo} style={{position:"fixed", bottom:5,right:5}} /></a>
     </div>
   );
 }

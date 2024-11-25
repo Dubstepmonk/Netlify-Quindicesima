@@ -1,0 +1,2 @@
+Open cmd in this directory where this notepad is located
+java -jar target/DataJpa-0.0.1-SNAPSHOT.jar

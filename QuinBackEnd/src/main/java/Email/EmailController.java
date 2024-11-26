@@ -9,6 +9,7 @@ import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.spring.VelocityEngineUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
@@ -24,7 +25,7 @@ public class EmailController {
     EmailService emailService;
 	
 	@PostMapping("/booktrial")
-	public ResponseEntity<Person> receiveUserDetails(@RequestBody Person person) throws MessagingException{
+	public ResponseEntity<String> receiveUserDetails(@RequestBody Person person) throws MessagingException{
 		
 //		System.out.println(person.getFirstName());
 		if(person!=null) {
@@ -37,8 +38,10 @@ public class EmailController {
 //			String text =VelocityEngineUtils.mergeTemplateIntoString(velocityEngine
 //                    , "src/main/resources/registration-confirmation.vm",model);
 			emailService.sendEmail(person);
+			return ResponseEntity.ok("Form submitted successfully!");
 		}
-		return null;
+		 String errorMessage = "Internal server error occurred";
+		 return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR); // 500 Internal Server Error
 		
 	}
 }

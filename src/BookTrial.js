@@ -26,7 +26,27 @@ function BookTrial() {
       contactNumber: e.target.contactNumberInput.value,
       email: e.target.emailInput.value,
     };
-    axios.post(API_URL + "/booktrial", userParticulars);
+
+    try {
+      // Make an asynchronous POST request to the server
+      const response = await axios.post(API_URL + "/booktrial", userParticulars);
+
+      // Handle the response from the server
+      console.log("Server response:", response.data);
+
+      // Optional: Handle success (e.g., show a success message)
+      if (response.status === 200) {
+        console.log("Booking successful!");
+      } else {
+        console.error("Failed to book trial");
+      }
+
+    } catch (error) {
+      // Handle error (e.g., network issues, server errors)
+      console.error("Error booking trial:", error);
+    }
+  };
+    //axios.post(API_URL + "/booktrial", userParticulars);
   };
   // const buttonStyle = {
   //   backgroundColor: "#a054e4",

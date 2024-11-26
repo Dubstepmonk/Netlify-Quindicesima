@@ -1,0 +1,6 @@
+https://quindicesimabackend-latest.onrender.com/booktrial
+
+
+
+docker build -t quinbackend .
+docker push falte111/quindicesimabackend:latest

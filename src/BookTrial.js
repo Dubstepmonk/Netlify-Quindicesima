@@ -16,7 +16,7 @@ function BookTrial() {
   const handleChange = (newValue) => {
     setValue(newValue);
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async  (e) => {
     e.preventDefault();
     console.log("submit gbutton pressed");
     console.log(e.target.firstNameInput.value);
@@ -45,7 +45,6 @@ function BookTrial() {
       // Handle error (e.g., network issues, server errors)
       console.error("Error booking trial:", error);
     }
-  };
     //axios.post(API_URL + "/booktrial", userParticulars);
   };
   // const buttonStyle = {

@@ -8,6 +8,7 @@ import Orchestral from "./Orchestral";
 import BookTrial from "./BookTrial";
 import Products from "./Products";
 import ScrollToTop from "./ScrollToTop"
+import SubmitFormSuccess from "./SubmitFormSuccess";
 function App() {
   // const containerStyle = {
   //   width: "100vw",
@@ -31,6 +32,7 @@ function App() {
         <Route path="/orchestral" element={<Orchestral/>} />
         <Route path="/booktrial" element={<BookTrial/>}/>
         <Route path="/products" element={<Products/>}/>
+        <Route path ="/success" element={<SubmitFormSuccess/>}/>
       </Routes>
     </Router>
   );

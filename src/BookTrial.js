@@ -2,6 +2,7 @@ import Navbar from "./Navbar";
 import { Grid, TextField, Toolbar, Box } from "@mui/material";
 import { MuiTelInput } from "mui-tel-input";
 import { useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import PlaceIcon from "@mui/icons-material/Place";
 import PhoneIcon from "@mui/icons-material/Phone";
 import Footer from "./Footer";
@@ -35,9 +36,16 @@ function BookTrial() {
       console.log("Server response:", response.data);
 
       // Optional: Handle success (e.g., show a success message)
+
+      //TODO: Conditionally pop up page saying booking successful
       if (response.status === 200) {
         console.log("Booking successful!");
-      } else {
+        
+
+        
+      } 
+      //TODO: Conditionally pop up page saying booking fail internal server error or just redirect to Internal Server Error page
+      else {
         console.error("Failed to book trial");
       }
 

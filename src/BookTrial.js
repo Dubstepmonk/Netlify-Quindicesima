@@ -2,7 +2,7 @@ import Navbar from "./Navbar";
 import { Grid, TextField, Toolbar, Box } from "@mui/material";
 import { MuiTelInput } from "mui-tel-input";
 import { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 import PlaceIcon from "@mui/icons-material/Place";
 import PhoneIcon from "@mui/icons-material/Phone";
 import Footer from "./Footer";
@@ -17,6 +17,7 @@ function BookTrial() {
   const handleChange = (newValue) => {
     setValue(newValue);
   };
+  const navigate = useNavigate(); // Use useNavigate for redirection
   const handleSubmit = async  (e) => {
     e.preventDefault();
     console.log("submit gbutton pressed");
@@ -40,9 +41,7 @@ function BookTrial() {
       //TODO: Conditionally pop up page saying booking successful
       if (response.status === 200) {
         console.log("Booking successful!");
-        
-
-        
+        navigate('/success');        
       } 
       //TODO: Conditionally pop up page saying booking fail internal server error or just redirect to Internal Server Error page
       else {

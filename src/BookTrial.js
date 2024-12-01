@@ -34,8 +34,8 @@ function BookTrial() {
       const response = await axios.post(API_URL + "/booktrial", userParticulars);
 
       // Handle the response from the server
+      console.log("Server response status:", response.status);
       console.log("Server response:", response.data);
-      console.log("Server response:", response); // Log the full response
 
       //TODO: Conditionally pop up page saying booking successful
       if (response.status === 200) {

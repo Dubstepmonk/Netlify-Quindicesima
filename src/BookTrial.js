@@ -35,8 +35,7 @@ function BookTrial() {
 
       // Handle the response from the server
       console.log("Server response:", response.data);
-
-      // Optional: Handle success (e.g., show a success message)
+      console.log("Server response:", response); // Log the full response
 
       //TODO: Conditionally pop up page saying booking successful
       if (response.status === 200) {

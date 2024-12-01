@@ -2,7 +2,6 @@ import Navbar from "./Navbar";
 import { Grid, TextField, Toolbar, Box } from "@mui/material";
 import { MuiTelInput } from "mui-tel-input";
 import { useState } from "react";
-import {useNavigate } from "react-router-dom";
 import PlaceIcon from "@mui/icons-material/Place";
 import PhoneIcon from "@mui/icons-material/Phone";
 import Footer from "./Footer";
@@ -17,7 +16,7 @@ function BookTrial() {
   const handleChange = (newValue) => {
     setValue(newValue);
   };
-  const navigate = useNavigate(); // Use useNavigate for redirection
+  const handleSubmit = (e) => {
   const handleSubmit = async  (e) => {
     e.preventDefault();
     console.log("submit gbutton pressed");
@@ -34,16 +33,12 @@ function BookTrial() {
       const response = await axios.post(API_URL + "/booktrial", userParticulars);
 
       // Handle the response from the server
-      console.log("Server response status:", response.status);
       console.log("Server response:", response.data);
 
-      //TODO: Conditionally pop up page saying booking successful
+      // Optional: Handle success (e.g., show a success message)
       if (response.status === 200) {
         console.log("Booking successful!");
-        //navigate('/success');        
-      } 
-      //TODO: Conditionally pop up page saying booking fail internal server error or just redirect to Internal Server Error page
-      else {
+      } else {
         console.error("Failed to book trial");
       }
 
@@ -51,6 +46,7 @@ function BookTrial() {
       // Handle error (e.g., network issues, server errors)
       console.error("Error booking trial:", error);
     }
+  };
     //axios.post(API_URL + "/booktrial", userParticulars);
   };
   // const buttonStyle = {
@@ -182,7 +178,7 @@ function BookTrial() {
             </Grid>
           </Grid>
           <Footer></Footer>
-  
+
         </Grid>
 
       </div>
@@ -196,7 +192,6 @@ function BookTrial() {
           <div>
           <PlaceIcon color="action"></PlaceIcon> <text>36 Toa Payoh, #11-341, Singapore, Singapore</text></div>
   <div><PhoneIcon color = "action"></PhoneIcon><text>+65 9145 0050</text></div>
-
         </Grid>
         </Grid> */}
                 <a

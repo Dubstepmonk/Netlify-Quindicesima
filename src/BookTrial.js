@@ -40,7 +40,7 @@ function BookTrial() {
       //TODO: Conditionally pop up page saying booking successful
       if (response.status === 200) {
         console.log("Booking successful!");
-        navigate('/success');        
+        //navigate('/success');        
       } 
       //TODO: Conditionally pop up page saying booking fail internal server error or just redirect to Internal Server Error page
       else {

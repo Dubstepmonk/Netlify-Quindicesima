@@ -2,6 +2,7 @@ import Navbar from "./Navbar";
 import { Grid, TextField, Toolbar, Box } from "@mui/material";
 import { MuiTelInput } from "mui-tel-input";
 import { useState } from "react";
+import {useNavigate } from "react-router-dom";
 import PlaceIcon from "@mui/icons-material/Place";
 import PhoneIcon from "@mui/icons-material/Phone";
 import Footer from "./Footer";
@@ -38,6 +39,8 @@ function BookTrial() {
       // Optional: Handle success (e.g., show a success message)
       if (response.status === 200) {
         console.log("Booking successful!");
+        navigate('/success'); 
+        
       } else {
         console.error("Failed to book trial");
       }

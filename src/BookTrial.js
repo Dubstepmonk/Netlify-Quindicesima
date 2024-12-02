@@ -13,6 +13,7 @@ import "./ButtonHover.css"
 
 function BookTrial() {
   const API_URL = "https://quindicesimabackend-latest.onrender.com";
+  const navigate = useNavigate(); // Use useNavigate for redirection
   const [value, setValue] = useState("+65");
   const handleChange = (newValue) => {
     setValue(newValue);
@@ -40,7 +41,7 @@ function BookTrial() {
       if (response.status === 200) {
         console.log("Booking successful!");
         navigate('/success'); 
-        
+
       } else {
         console.error("Failed to book trial");
       }

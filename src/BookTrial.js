@@ -1,5 +1,7 @@
 import Navbar from "./Navbar";
 import { Grid, TextField, Toolbar, Box } from "@mui/material";
+import CircularProgress from '@mui/material/CircularProgress';
+import Backdrop from '@mui/material/Backdrop';
 import { MuiTelInput } from "mui-tel-input";
 import { useState } from "react";
 import {useNavigate } from "react-router-dom";
@@ -18,10 +20,17 @@ function BookTrial() {
   const handleChange = (newValue) => {
     setValue(newValue);
   };
- 
+  const [open, setOpen] = useState(false);
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const handleToggle = () => {
+    setOpen(!open);
+  };
   const handleSubmit = async  (e) => {
     e.preventDefault();
-    console.log("submit gbutton pressed");
+    handleToggle()
+    console.log("submit button pressed");
     console.log(e.target.firstNameInput.value);
     var userParticulars = {
       firstName: e.target.firstNameInput.value,
@@ -33,13 +42,14 @@ function BookTrial() {
     try {
       // Make an asynchronous POST request to the server
       const response = await axios.post(API_URL + "/booktrial", userParticulars);
-
+      
       // Handle the response from the server
       console.log("Server response:", response.data);
 
       // Optional: Handle success (e.g., show a success message)
       if (response.status === 200) {
         console.log("Booking successful!");
+        handleClose();
         navigate('/success'); 
 
       } else {
@@ -86,6 +96,13 @@ function BookTrial() {
               <Navbar></Navbar>
             </Toolbar>
           </Grid>
+          <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={open}
+        onClick={handleClose}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
           <Grid item lg={12} md={12} xs={12}>
             {/* <Toolbar><Navbar></Navbar></Toolbar> */}
             <div style={{ maxWidth: "70%", paddingBottom: "2%" }}>
@@ -132,6 +149,7 @@ function BookTrial() {
                     paddingBottom: "2%",
                   }}
                 ></TextField>
+              
               </div>
               <div>
                 <MuiTelInput
@@ -181,6 +199,7 @@ function BookTrial() {
               </div>
             </Grid>
           </Grid>
+          
           <Footer></Footer>
 
         </Grid>

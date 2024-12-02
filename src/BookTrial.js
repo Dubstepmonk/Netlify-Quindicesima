@@ -46,6 +46,8 @@ function BookTrial() {
       // Handle the response from the server
       console.log("Server response:", response.data);
 
+      //Spinner loader 
+      //https://stackoverflow.com/questions/68626448/material-ui-how-to-show-loading-spinner-overlay-over-the-page
       // Optional: Handle success (e.g., show a success message)
       if (response.status === 200) {
         console.log("Booking successful!");

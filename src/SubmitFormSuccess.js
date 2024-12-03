@@ -33,16 +33,16 @@ function SubmitFormSuccess() {
         <Grid>
           <CheckCircleOutlineIcon sx={{ fontSize: 86, color: '#55b673' }} />
         </Grid>
-        <h1 style={{ fontFamily: 'Edwin', color: '#6cbc88' }}>
+        <h1 style={{ fontFamily: 'Edwin',  }}>
           Form submitted successfully!
         </h1>
-        <p style={{ fontFamily: 'Edwin', color: '#6cbc88' }}>
+        <p style={{ fontFamily: 'Edwin',  }}>
           Thank you! The form has been submitted successfully.
         </p>
-        <p style={{ fontFamily: 'Edwin', color: '#6cbc88' }}>
+        <p style={{ fontFamily: 'Edwin',  }}>
           We will reply to you soon!
         </p>
-        <a href="https://quindicesima.com" style={{ color: '#6cbc88' }}>
+        <a href="https://quindicesima.com" style={{  }}>
           Go back to home
         </a>
       </Grid>

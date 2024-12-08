@@ -1,6 +1,14 @@
 https://quindicesimabackend-latest.onrender.com/booktrial
 
 
+If you are pushing a new commit for docker image
+Remove the image from docker desktop
+then run these:
 
+#Builds the docker image
 docker build -t quinbackend .
+
+#Tags the builded image to the falte111 repo 
+docker tag quinbackend falte111/quindicesimabackend:latest
 docker push falte111/quindicesimabackend:latest
+

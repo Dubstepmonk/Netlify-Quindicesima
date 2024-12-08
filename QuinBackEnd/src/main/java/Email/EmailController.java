@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -44,4 +45,11 @@ public class EmailController {
 		 return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR); // 500 Internal Server Error
 		
 	}
+	
+	// Cron job will call this api service every 10 minutes to prevent Render from causing the Email Service to sleep.
+	@GetMapping("/preventsleep")
+	public ResponseEntity<String> preventEmailServiceSleeping () {
+		return ResponseEntity.ok("Received request from client not to sleep!");
+	}
+	
 }

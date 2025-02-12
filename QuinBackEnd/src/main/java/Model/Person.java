@@ -5,17 +5,19 @@ public class Person {
 	private String lastName;
 	private String contactNumber;
 	private String email;
+	private String trialtime;
 	
 	Person(){
 		super();
 	}
 
-	public Person(String firstName, String lastName, String contactNumber, String email) {
+	public Person(String firstName, String lastName, String contactNumber, String email, String trialtime) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.contactNumber = contactNumber;
 		this.email = email;
+		this.trialtime = trialtime;
 	}
 
 	public String getFirstName() {
@@ -50,5 +52,12 @@ public class Person {
 		this.email = email;
 	}
 	
+	public String getTrialTime() {
+		return trialtime;
+	}
+	
+	public void setTrialTime(String trialtime) {
+		this.trialtime=trialtime;
+	}
 	
 }

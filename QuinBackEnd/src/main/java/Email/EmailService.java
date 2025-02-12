@@ -82,7 +82,7 @@ public class EmailService {
 					String upperCaseFirstName= person.getFirstName().toUpperCase();
 					String modifiedString = upperCaseFirstName.replace("", " ").trim() + "!";
 					model.put("firstname", modifiedString);
-					String text = "Name: " + person.getFirstName() + person.getLastName()  + " Contact No: " + person.getContactNumber() + " Email: " + person.getEmail() ;
+					String text = "Name: " + person.getFirstName() + person.getLastName()  + " Contact No: " + person.getContactNumber() + " Email: " + person.getEmail() + "Requested Trial Class Time : " +person.getTrialTime() ;
 					message.setText(text, true);
 				}
 

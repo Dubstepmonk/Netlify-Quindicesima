@@ -32,17 +32,27 @@ function BookTrial({children}) {
     setOpen(!open);
   };
   const [timeValue, setTimeValue] = useState(moment());
+  const handleTimeChange = (newTimeValue) => {
+    setTimeValue(newTimeValue);
+  };
+
+
   const handleSubmit = async  (e) => {
     e.preventDefault();
     handleToggle()
     console.log("submit button pressed");
-    console.log(e.target.timeValueInput.value);
+  // Get the time value from the DateTimePicker (already a moment object)
+    const selectedTime = timeValue;  // Assuming `timeValue` is a moment object
+  // Convert the time value to a string format using .toString
+    const formattedTime = selectedTime ? selectedTime.toString() : ''; // Example format: 02/14/2025 04:15 PM
+    console.log(formattedTime);
+
     var userParticulars = {
       firstName: e.target.firstNameInput.value,
       lastName: e.target.lastNameInput.value,
       contactNumber: e.target.contactNumberInput.value,
       email: e.target.emailInput.value,
-      trialtime: e.target.timeValueInput.value  //Ouputs time in this format eg : 02/14/2025 04:15 PM
+      trialtime: formattedTime  //Ouputs time in this format eg : 02/14/2025 04:15 PM
     };
 
     try {
@@ -176,9 +186,7 @@ function BookTrial({children}) {
           renderInput={(params) => <TextField {...params} />}
           label="Requested Trial Time"
           value={timeValue}
-          onChange={(newTimeValue) => {
-            setTimeValue(newTimeValue);
-          }}
+          onChange={handleTimeChange}
           minDateTime={moment()}
         />
               </div>

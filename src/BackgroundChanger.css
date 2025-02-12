@@ -1,13 +1,13 @@
 .background-container {
     width: 100%;
-    height: auto;
+    height: 100vh; /* Adjust based on your layout */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    animation: fadeIn 8s linear forwards infinite;
-}
-@keyframes fadeIn {
-    0%,100% { opacity: 0; }
-    50% { opacity: 1; }
+    opacity: 1;
+    transition: opacity 4s ease-in-out; /* Default smooth fade-in/out transition */
   }
   
+  .background-container.fading {
+    opacity: 0; /* Makes the container invisible during the fade-out */
+  }

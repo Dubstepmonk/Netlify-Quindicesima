@@ -28,7 +28,6 @@ import ImageSlideShow from "./ImageSlideShow";
 import {AnimatedOnScroll} from "react-animated-css-onscroll";
 import { styled } from '@mui/system';
 import Typography from '@mui/material/Typography';
-import ResponsiveFont from "./ResponsiveFont.css"
 
 function Home() {
   const backgroundimages =[
@@ -81,11 +80,16 @@ function Home() {
 
 
   const [backgroundimageused, setBackGroundImageUsed] = useState(0);
+  const [isFading, setIsFading] = useState(false); // Used to control fade effect
   const navigate = useNavigate();
   useEffect(() => {
     const interval = setInterval(() => {
-      setBackGroundImageUsed(prevIndex => (prevIndex + 1) % backgroundimages.length);
-    }, 8000);
+    setIsFading(true); // Start fading out the current image
+      setTimeout(() => {
+        setBackGroundImageUsed((prevIndex) => (prevIndex + 1) % backgroundimages.length);
+        setIsFading(false); // Fade-in the new image after the current image has faded out
+      }, 6000); // Fade-out effect lasts for 4 seconds
+    }, 16000); // Change image every 10 seconds (6 seconds for fade-in and 4 seconds for fade-out)
 
     return () => clearInterval(interval);
   }, [backgroundimages.length]);
@@ -135,7 +139,10 @@ function Home() {
   </link>
 </head>
       <Navbar></Navbar>
-      <Grid className="background-container" style={{backgroundImage: `url(${(backgroundimages[backgroundimageused])})`, backgroundRepeat:"no-repeat"}}>
+      <Grid className={`background-container ${isFading ? 'fading' : ''}`}style={{backgroundImage: `url(${(backgroundimages[backgroundimageused])})`, backgroundRepeat:"no-repeat" , 
+        opacity: isFading ? 0 : 1, // Fade out (0) or fade in (1)
+        transition: 'opacity 6s ease-out', // Smooth fade-out
+        }}>
         <div className="homeText"  style={{
         display: 'flex',
         alignItems: 'center',
@@ -149,6 +156,8 @@ function Home() {
         </div>
         </div>
       </Grid>
+
+      
       {/* CSS to push the next content section down */}
       <div style={{marginBottom:"100px"}}></div>
       {/* <Divider/> */}

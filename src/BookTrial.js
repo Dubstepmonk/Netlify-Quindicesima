@@ -36,12 +36,13 @@ function BookTrial({children}) {
     e.preventDefault();
     handleToggle()
     console.log("submit button pressed");
-    console.log(e.target.firstNameInput.value);
+    console.log(e.target.timeValueInput.value);
     var userParticulars = {
       firstName: e.target.firstNameInput.value,
       lastName: e.target.lastNameInput.value,
       contactNumber: e.target.contactNumberInput.value,
       email: e.target.emailInput.value,
+      trialtime: e.target.timeValueInput.value  //Ouputs time in this format eg : 02/14/2025 04:15 PM
     };
 
     try {
@@ -171,6 +172,7 @@ function BookTrial({children}) {
                {/* DateTimePicker portion */}
                <div>
                <DateTimePicker
+               name = "timeValueInput"
           renderInput={(params) => <TextField {...params} />}
           label="Requested Trial Time"
           value={timeValue}

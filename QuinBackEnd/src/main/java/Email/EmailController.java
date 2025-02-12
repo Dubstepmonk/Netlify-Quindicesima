@@ -49,7 +49,7 @@ public class EmailController {
 	// Cron job will call this api service every 10 minutes to prevent Render from causing the Email Service to sleep.
 	@GetMapping("/preventsleep")
 	public ResponseEntity<String> preventEmailServiceSleeping () {
-		return ResponseEntity.ok("Received request from client not to sleep!");
+		return ResponseEntity.ok("OK");
 	}
 	
 }

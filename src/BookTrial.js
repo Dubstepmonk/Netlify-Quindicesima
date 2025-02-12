@@ -1,4 +1,7 @@
 import Navbar from "./Navbar";
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { Grid, TextField, Toolbar, Box } from "@mui/material";
 import CircularProgress from '@mui/material/CircularProgress';
 import Backdrop from '@mui/material/Backdrop';
@@ -12,8 +15,9 @@ import whatsapplogo from "./resource/WhatsAppButtonGreenSmall.svg";
 import axios from "axios";
 import backgroundClass from "./resource/musictheory1.jpg";
 import "./ButtonHover.css"
+import moment from "moment";
 
-function BookTrial() {
+function BookTrial({children}) {
   const API_URL = "https://quindicesimabackend-latest.onrender.com";
   const navigate = useNavigate(); // Use useNavigate for redirection
   const [value, setValue] = useState("+65");
@@ -27,6 +31,7 @@ function BookTrial() {
   const handleToggle = () => {
     setOpen(!open);
   };
+  const [timeValue, setTimeValue] = useState(moment());
   const handleSubmit = async  (e) => {
     e.preventDefault();
     handleToggle()
@@ -81,6 +86,8 @@ function BookTrial() {
     // Given that you're using Material-UI, sometimes the backdropFilter might not work as expected due to conflicts with Material-UI's styles.
     // One workaround for this is to use an additional div inside the main div to apply the backdropFilter style.
     //Here's how you can modify your code to apply the backdrop filter to a nested div:
+    <LocalizationProvider dateAdapter={AdapterMoment}>
+          {children}
     <div style={backGroundBlur}>
       <div style={{ backdropFilter: "blur(8px)" }}>
         {" "}
@@ -161,6 +168,19 @@ function BookTrial() {
                   style={{ width: 300, maxWidth: "70%", paddingBottom: "2%" }}
                 />
               </div>
+               {/* DateTimePicker portion */}
+               <div>
+               <DateTimePicker
+          renderInput={(params) => <TextField {...params} />}
+          label="Requested Trial Time"
+          value={timeValue}
+          onChange={(newTimeValue) => {
+            setTimeValue(newTimeValue);
+          }}
+          minDateTime={moment()}
+        />
+              </div>
+              
               <div>
                 <TextField
                   id="email"
@@ -177,6 +197,7 @@ function BookTrial() {
                   }}
                 ></TextField>
               </div>
+        
               <div>
                 <button type="submit" className="button">
                   <span style={{ color: "white", fontFamily: "Edwin" }}>
@@ -231,6 +252,7 @@ function BookTrial() {
             />
           </a>
     </div>
+    </LocalizationProvider>
   );
 }
 export default BookTrial;

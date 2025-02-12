@@ -23,6 +23,7 @@ function App() {
     //   <Navbar></Navbar>
     //   <Cards></Cards>
     // </div>
+    
     <Router>
       <ScrollToTop></ScrollToTop>
       <Routes>
@@ -35,6 +36,7 @@ function App() {
         <Route path ="/success" element={<SubmitFormSuccess/>}/>
       </Routes>
     </Router>
+    
   );
 }
 

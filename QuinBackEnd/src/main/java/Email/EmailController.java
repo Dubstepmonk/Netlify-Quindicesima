@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import Model.Person;
 @Controller
 @CrossOrigin(origins = "https://quindicesima.com")
+//@CrossOrigin(origins = "http://localhost:3000")
 public class EmailController {
     @Autowired
     EmailService emailService;
@@ -30,6 +31,9 @@ public class EmailController {
 		
 //		System.out.println(person.getFirstName());
 		if(person!=null) {
+			   // Check if trialtime is populated correctly
+//			System.out.println("testing received number anot" + person.getContactNumber());
+//	        System.out.println("Trial Time received: " + person.getTrialTime());
 //			EmailService emailService = new EmailService();
 //			VelocityEngine velocityEngine = new VelocityEngine();
 //			velocityEngine.init();

@@ -1,5 +1,7 @@
 package Email;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -38,6 +40,12 @@ public class EmailService {
 //    }
     
 	public void sendEmail(Person person) {
+		// Create a LocalDateTime object (current date and time)
+		System.out.println("nimama" + person.getTrialTime());
+        LocalDateTime localDateTime = LocalDateTime.now();
+        // Define a formatter pattern (you can customize this pattern)
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        
 		VelocityEngine velocityEngine = new VelocityEngine();
 		velocityEngine.setProperty("resource.loader", "classpath");
 		velocityEngine.setProperty("classpath.resource.loader.class", "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
@@ -82,7 +90,7 @@ public class EmailService {
 					String upperCaseFirstName= person.getFirstName().toUpperCase();
 					String modifiedString = upperCaseFirstName.replace("", " ").trim() + "!";
 					model.put("firstname", modifiedString);
-					String text = "Name: " + person.getFirstName() + person.getLastName()  + " Contact No: " + person.getContactNumber() + " Email: " + person.getEmail() + "Requested Trial Class Time : " +person.getTrialTime() ;
+					String text = "Name: " + person.getFirstName() + person.getLastName()  + " Contact No: " + person.getContactNumber() + " Email: " + person.getEmail() + "Requested Trial Class Time : " +person.getTrialTime();
 					message.setText(text, true);
 				}
 

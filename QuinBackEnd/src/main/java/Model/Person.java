@@ -1,10 +1,15 @@
 package Model;
 
+import java.time.LocalDateTime;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Person {
 	private String firstName;
 	private String lastName;
 	private String contactNumber;
 	private String email;
+	@JsonProperty("trialtime")    //Explicitly make sure the Person.trialtime matches the JSON property, for some reason I need to explictly do it, without this my backend sees this as null
 	private String trialtime;
 	
 	Person(){

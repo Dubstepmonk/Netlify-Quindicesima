@@ -43,8 +43,7 @@ function BookTrial({children}) {
     console.log("submit button pressed");
   // Get the time value from the DateTimePicker (already a moment object)
     const selectedTime = timeValue;  // Assuming `timeValue` is a moment object
-  // Convert the time value to a string format using .toString
-    const formattedTime = selectedTime ? selectedTime.toString() : ''; // Example format: 02/14/2025 04:15 PM
+    const formattedTime = selectedTime.format('DD/MM/YY HH:mm')
     console.log(formattedTime);
 
     var userParticulars = {
@@ -52,12 +51,14 @@ function BookTrial({children}) {
       lastName: e.target.lastNameInput.value,
       contactNumber: e.target.contactNumberInput.value,
       email: e.target.emailInput.value,
-      trialtime: formattedTime  //Ouputs time in this format eg : 02/14/2025 04:15 PM
+      trialtime: String(formattedTime)
     };
 
     try {
       // Make an asynchronous POST request to the server
-      const response = await axios.post(API_URL + "/booktrial", userParticulars);
+       const response = await axios.post(API_URL + "/booktrial", userParticulars);
+      // console.log("userparticulars sent over is :" + userParticulars.trialtime)
+      // const response = await axios.post("http://localhost:8080/booktrial", userParticulars);
       
       // Handle the response from the server
       console.log("Server response:", response.data);
@@ -188,6 +189,7 @@ function BookTrial({children}) {
           value={timeValue}
           onChange={handleTimeChange}
           minDateTime={moment()}
+          minutesStep={5}
         />
               </div>
               

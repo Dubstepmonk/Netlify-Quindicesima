@@ -120,7 +120,7 @@ function Navbar() {
       <Toolbar />
       <List>
         {['Home', 'Courses', 'Products'].map((text, index) => (
-          <ListItem key={text} disablePadding     onClick={() => handleCloseNavMenu(text)}>
+          <ListItem key={text} disablePadding     onClick={() => handleCloseNavMenu(text)} >
             <ListItemButton>
               <ListItemIcon>
               {/* Assign specific icons based on index */}
@@ -133,6 +133,7 @@ function Navbar() {
           </ListItem>
         ))}
         
+        {/* Drawer Section for ExpandMore Orchestra with subsection Join Our Orchestra, About Us and Events */}
         <ListItemButton onClick={handleClickOpenSubDrawer}>
               <ListItemIcon>
                 <MusicNoteIcon style={{color:"#cc7420"}} />
@@ -146,7 +147,7 @@ function Navbar() {
             <ListItemIcon>
               <Diversity1Icon style={{color:"#cc7420"}}/>
             </ListItemIcon>
-            <ListItemText style={{fontFamily:"Edwin" }}  disableTypography={true}primary="Join our Orchestra" />
+            <ListItemText style={{fontFamily:"Edwin" }}  disableTypography={true} primary="Join our Orchestra" />
           </ListItemButton>
 
           <ListItemButton sx={{ pl: 4 }} onClick={()=>navigate("/orchestra")}>
@@ -214,6 +215,7 @@ function Navbar() {
           open={mobileOpen}
           onTransitionEnd={handleDrawerTransitionEnd}
           onClose={handleDrawerClose}
+          onClickAway={handleDrawerClose}
           sx={{
             display: { xs: 'block', sm: 'block'  },
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },

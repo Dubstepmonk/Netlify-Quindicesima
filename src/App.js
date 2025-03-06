@@ -4,7 +4,7 @@ import * as React from "react";
 import Home from "./Home";
 import Courses from "./Courses";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Orchestral from "./Orchestral";
+import Orchestra from "./Orchestra";
 import BookTrial from "./BookTrial";
 import Products from "./Products";
 import ScrollToTop from "./ScrollToTop"
@@ -30,7 +30,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/courses" element={<Courses />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/orchestral" element={<Orchestral/>} />
+        <Route path="/orchestra" element={<Orchestra/>} />
         <Route path="/booktrial" element={<BookTrial/>}/>
         <Route path="/products" element={<Products/>}/>
         <Route path ="/success" element={<SubmitFormSuccess/>}/>

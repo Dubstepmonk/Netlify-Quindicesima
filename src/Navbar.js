@@ -5,29 +5,31 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
+import MenuList from '@mui/material/MenuList';
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
+import ClickAwayListener from '@mui/material/ClickAwayListener';
+import Grow from '@mui/material/Grow';
+import Paper from '@mui/material/Paper';
+import Popper from '@mui/material/Popper';
 import { Navigate, useNavigate } from "react-router-dom";
 import logo from "./resource/QLogo.png"
+import { color } from "@mui/system";
 
-const pages = ["Home", "Courses", "Orchestral", "Products"];
-//const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const pages = ["Home", "Courses", "Products"];
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [openOrchestraTab, setOpenOrchestraTab] = React.useState(false);
+  const anchorRef = React.useRef(null);
   const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
   };
 
   const handleCloseNavMenu = (pagename) => {
@@ -39,15 +41,42 @@ function Navbar() {
     else{
     navigate("/" + pagename);
     }
-    //setAnchorElNav(null);
   };
+
   const handleCloseWhenClickingAway = () => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
+  const handleToggleOrchestraTab = () => {
+    setOpenOrchestraTab((prevOpen) => !prevOpen);
   };
+
+  const handleClose = (event) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return;
+    }
+
+    setOpenOrchestraTab(false);
+  };
+
+  function handleListKeyDown(event) {
+    if (event.key === 'Tab') {
+      event.preventDefault();
+      setOpenOrchestraTab(false);
+    } else if (event.key === 'Escape') {
+      setOpenOrchestraTab(false);
+    }
+  }
+
+   // return focus to the button when we transitioned from !open -> open
+   const prevOpen = React.useRef(openOrchestraTab);
+   React.useEffect(() => {
+     if (prevOpen.current === true && openOrchestraTab === false) {
+       anchorRef.current.focus();
+     }
+ 
+     prevOpen.current = openOrchestraTab;
+   }, [openOrchestraTab]);
 
   return (
     // <AppBar position="static" style={{background:"#282424"}}>
@@ -55,7 +84,6 @@ function Navbar() {
     <AppBar style={{background:"#282424"}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* <AdbIcon sx={{ display: { xs: "none", md: "flex-grow" }, mr: 1 }} /> */}
           <Typography
             variant="h6"
             noWrap
@@ -114,9 +142,7 @@ function Navbar() {
               ))}
             </Menu>
           </Box>
-          {/* <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} /> */}
-          {/* <Box component="img" sx={{ display: { xs: "flex", md: "none" }, mr: 1,  maxWidth:"70px"}} src={logo}></Box> */}
-          {/* <img src={logo} style={{maxWidth:"70px"}}></img> */}
+
           <Typography
             variant="h5"
             noWrap
@@ -136,6 +162,7 @@ function Navbar() {
             <img src={logo} style={{maxWidth:"70px"}}></img>
             {/* LOGO */}
           </Typography>
+          {/* This section is for styling menu for big screen  */}
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
@@ -147,6 +174,52 @@ function Navbar() {
                 {page}
               </Button>
             ))}
+
+           <Button
+                     ref={anchorRef}
+                     id="composition-button"
+                     aria-controls={openOrchestraTab ? 'composition-menu' : undefined}
+                     aria-expanded={openOrchestraTab ? 'true' : undefined}
+                     aria-haspopup="true"
+                     onClick={handleToggleOrchestraTab}
+                     sx={{ my: 2, color: "white", display: "block" , fontFamily:"Edwin"}}
+           >
+            Orchestra
+           </Button>
+           <Popper
+          open={openOrchestraTab}
+          anchorEl={anchorRef.current}
+          role={undefined}
+          placement="bottom-start"
+          transition
+          disablePortal
+        >
+          {({ TransitionProps, placement }) => (
+            <Grow
+              {...TransitionProps}
+              style={{
+                transformOrigin:
+                  placement === 'bottom-start' ? 'left top' : 'left bottom',
+              }}
+            >
+              <Paper>
+                <ClickAwayListener onClickAway={handleClose}>
+                  <MenuList
+                    autoFocusItem={openOrchestraTab}
+                    id="composition-menu"
+                    aria-labelledby="composition-button"
+                    onKeyDown={handleListKeyDown}
+                    sx={{backgroundColor:"#282424"}}
+                  > 
+                    <MenuItem onClick={handleClose} sx={{color:"white" , fontFamily:"Edwin"}}>Join our Orchestra</MenuItem>
+                    <MenuItem onClick={()=>navigate("/orchestra")} sx={{color:"white" , fontFamily:"Edwin"}}>About us</MenuItem>
+                    <MenuItem onClick={handleClose} sx={{color:"white" , fontFamily:"Edwin"}}>Events</MenuItem>
+                  </MenuList>
+                </ClickAwayListener>
+              </Paper>
+            </Grow>
+          )}
+        </Popper>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
@@ -155,33 +228,6 @@ function Navbar() {
             background: '#9b51e0'
            }
         } onClick={()=>navigate("/booktrial")}>BOOK A FREE TRIAL</Button>
-            {/* <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu> */}
           </Box>
         </Toolbar>
       </Container>

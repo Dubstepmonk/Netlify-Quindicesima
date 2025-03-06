@@ -48,7 +48,7 @@ function Navbar() {
     setOpenSubDrawer(!openSubDrawer);
   };
   const handleDrawerClose = () => {
-    setIsClosing(true);
+
     setMobileOpen(false);
   };
   const drawerWidth = 240;
@@ -57,9 +57,7 @@ function Navbar() {
   };
 
   const handleDrawerToggle = () => {
-    if (!isClosing) {
-      setMobileOpen(!mobileOpen);
-    }
+    setMobileOpen((prevState) => !prevState);
   };
 
 
@@ -215,7 +213,7 @@ function Navbar() {
           open={mobileOpen}
           onTransitionEnd={handleDrawerTransitionEnd}
           onClose={handleDrawerClose}
-          onClickAway={handleDrawerClose}
+ 
           sx={{
             display: { xs: 'block', sm: 'block'  },
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },

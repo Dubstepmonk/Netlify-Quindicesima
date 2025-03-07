@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Orchestra from "./Orchestra";
 import BookTrial from "./BookTrial";
 import Products from "./Products";
+import Events from "./Events";
 import ScrollToTop from "./ScrollToTop"
 import SubmitFormSuccess from "./SubmitFormSuccess";
 function App() {
@@ -33,6 +34,7 @@ function App() {
         <Route path="/orchestra" element={<Orchestra/>} />
         <Route path="/booktrial" element={<BookTrial/>}/>
         <Route path="/products" element={<Products/>}/>
+        <Route path = "/events" element={<Events/>}/>
         <Route path ="/success" element={<SubmitFormSuccess/>}/>
       </Routes>
     </Router>

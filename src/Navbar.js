@@ -17,23 +17,23 @@ import Popper from "@mui/material/Popper";
 import { Navigate, useNavigate } from "react-router-dom";
 import logo from "./resource/QLogo.png";
 import { color } from "@mui/system";
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import HomeIcon from '@mui/icons-material/Home';
-import SchoolIcon from '@mui/icons-material/School'; // Example icon for Courses
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'; // Example icon for Products
-import MusicNoteIcon from '@mui/icons-material/MusicNote'; // Example icon for Orchestra
-import Diversity1Icon from '@mui/icons-material/Diversity1';
-import InfoIcon from '@mui/icons-material/Info';
-import EventAvailableIcon from '@mui/icons-material/EventAvailable';
-import Drawer from '@mui/material/Drawer';
-import ExpandLess from '@mui/icons-material/ExpandLess';
-import ExpandMore from '@mui/icons-material/ExpandMore';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Collapse from '@mui/material/Collapse';
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import HomeIcon from "@mui/icons-material/Home";
+import SchoolIcon from "@mui/icons-material/School"; // Example icon for Courses
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"; // Example icon for Products
+import MusicNoteIcon from "@mui/icons-material/MusicNote"; // Example icon for Orchestra
+import Diversity1Icon from "@mui/icons-material/Diversity1";
+import InfoIcon from "@mui/icons-material/Info";
+import EventAvailableIcon from "@mui/icons-material/EventAvailable";
+import Drawer from "@mui/material/Drawer";
+import ExpandLess from "@mui/icons-material/ExpandLess";
+import ExpandMore from "@mui/icons-material/ExpandMore";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Collapse from "@mui/material/Collapse";
 
 const pages = ["Home", "Courses", "Products"];
 
@@ -48,7 +48,6 @@ function Navbar() {
     setOpenSubDrawer(!openSubDrawer);
   };
   const handleDrawerClose = () => {
-
     setMobileOpen(false);
   };
   const drawerWidth = 240;
@@ -59,7 +58,6 @@ function Navbar() {
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
-
 
   const anchorRef = React.useRef(null);
   const navigate = useNavigate();
@@ -117,53 +115,85 @@ function Navbar() {
     <div>
       <Toolbar />
       <List>
-        {['Home', 'Courses', 'Products'].map((text, index) => (
-          <ListItem key={text} disablePadding     onClick={() => handleCloseNavMenu(text)} >
+        {["Home", "Courses", "Products"].map((text, index) => (
+          <ListItem
+            key={text}
+            disablePadding
+            onClick={() => handleCloseNavMenu(text)}
+          >
             <ListItemButton>
               <ListItemIcon>
-              {/* Assign specific icons based on index */}
-              {index === 0 ? <HomeIcon style={{color:"#cc7420"}} /> : 
-              index === 1 ? <SchoolIcon style={{color:"#cc7420"}} /> : 
-              index === 2 ? <ShoppingCartIcon style={{color:"#cc7420"}} /> : null}
+                {/* Assign specific icons based on index */}
+                {index === 0 ? (
+                  <HomeIcon style={{ color: "#cc7420" }} />
+                ) : index === 1 ? (
+                  <SchoolIcon style={{ color: "#cc7420" }} />
+                ) : index === 2 ? (
+                  <ShoppingCartIcon style={{ color: "#cc7420" }} />
+                ) : null}
               </ListItemIcon>
-              <ListItemText style={{fontFamily:"Edwin" }} disableTypography={true} primary={text} />
+              <ListItemText
+                style={{ fontFamily: "Edwin" }}
+                disableTypography={true}
+                primary={text}
+              />
             </ListItemButton>
           </ListItem>
         ))}
-        
+
         {/* Drawer Section for ExpandMore Orchestra with subsection Join Our Orchestra, About Us and Events */}
         <ListItemButton onClick={handleClickOpenSubDrawer}>
-              <ListItemIcon>
-                <MusicNoteIcon style={{color:"#cc7420"}} />
-              </ListItemIcon>
-        <ListItemText style={{fontFamily:"Edwin" }} disableTypography={true} primary="Orchestra" />
-        {openSubDrawer ? <ExpandLess /> : <ExpandMore />}
+          <ListItemIcon>
+            <MusicNoteIcon style={{ color: "#cc7420" }} />
+          </ListItemIcon>
+          <ListItemText
+            style={{ fontFamily: "Edwin" }}
+            disableTypography={true}
+            primary="Orchestra"
+          />
+          {openSubDrawer ? <ExpandLess /> : <ExpandMore />}
         </ListItemButton>
         <Collapse in={openSubDrawer} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
-            <ListItemIcon>
-              <Diversity1Icon style={{color:"#cc7420"}}/>
-            </ListItemIcon>
-            <ListItemText style={{fontFamily:"Edwin" }}  disableTypography={true} primary="Join our Orchestra" />
-          </ListItemButton>
+          <List component="div" disablePadding>
+            <ListItemButton sx={{ pl: 4 }}>
+              <ListItemIcon>
+                <Diversity1Icon style={{ color: "#cc7420" }} />
+              </ListItemIcon>
+              <ListItemText
+                style={{ fontFamily: "Edwin" }}
+                disableTypography={true}
+                primary="Join our Orchestra"
+              />
+            </ListItemButton>
 
-          <ListItemButton sx={{ pl: 4 }} onClick={()=>navigate("/orchestra")}>
-            <ListItemIcon>
-              <InfoIcon style={{color:"#cc7420"}} />
-            </ListItemIcon>
-            <ListItemText style={{fontFamily:"Edwin" }} disableTypography={true} primary="About us" />
-          </ListItemButton>
+            <ListItemButton
+              sx={{ pl: 4 }}
+              onClick={() => navigate("/orchestra")}
+            >
+              <ListItemIcon>
+                <InfoIcon style={{ color: "#cc7420" }} />
+              </ListItemIcon>
+              <ListItemText
+                style={{ fontFamily: "Edwin" }}
+                disableTypography={true}
+                primary="About us"
+              />
+            </ListItemButton>
 
-          <ListItemButton sx={{ pl: 4 }}>
-            <ListItemIcon>
-              <EventAvailableIcon style={{color:"#cc7420"}}   />
-            </ListItemIcon>
-            <ListItemText style={{fontFamily:"Edwin" }} disableTypography={true} primary="Events" />
-          </ListItemButton>
-        </List>
-      </Collapse>
-     
+            <ListItemButton sx={{ pl: 4 }}
+              onClick={() => navigate("/events")}
+            >
+              <ListItemIcon>
+                <EventAvailableIcon style={{ color: "#cc7420" }} />
+              </ListItemIcon>
+              <ListItemText
+                style={{ fontFamily: "Edwin" }}
+                disableTypography={true}
+                primary="Events"
+              />
+            </ListItemButton>
+          </List>
+        </Collapse>
       </List>
     </div>
   );
@@ -192,10 +222,7 @@ function Navbar() {
             <img src={logo} style={{ maxWidth: "70px" }}></img>
           </Typography>
 
-
-
-
-            {/* Drawer Section using menuicon for mobile devices */}
+          {/* Drawer Section using hamburger menu icon for mobile device screen */}
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -208,30 +235,32 @@ function Navbar() {
               <MenuIcon />
             </IconButton>
             <Drawer
-          container={document.body}
-          variant="temporary"
-          open={mobileOpen}
-          onTransitionEnd={handleDrawerTransitionEnd}
-          onClose={handleDrawerClose}
- 
-          sx={{
-            display: { xs: 'block', sm: 'block'  },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-          }}
-          slotProps={{
-            root: {
-              keepMounted: true, // Better open performance on mobile.
-            },
-          }}
-          PaperProps={{
-            sx: {
-              backgroundColor: "#282424",
-              color: "white",
-            }
-          }}
-        >
-          {drawer}
-        </Drawer>
+              container={document.body}
+              variant="temporary"
+              open={mobileOpen}
+              onTransitionEnd={handleDrawerTransitionEnd}
+              onClose={handleDrawerClose}
+              sx={{
+                display: { xs: "block", sm: "block" },
+                "& .MuiDrawer-paper": {
+                  boxSizing: "border-box",
+                  width: drawerWidth,
+                },
+              }}
+              slotProps={{
+                root: {
+                  keepMounted: true, // Better open performance on mobile.
+                },
+              }}
+              PaperProps={{
+                sx: {
+                  backgroundColor: "#282424",
+                  color: "white",
+                },
+              }}
+            >
+              {drawer}
+            </Drawer>
           </Box>
 
           {/* Quindicesima logo for small screen */}
@@ -257,41 +286,41 @@ function Navbar() {
 
           {/* This section is for styling menu for big screen  */}
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-          {pages.map((page) => (
-    <Button
-      key={page}
-      onClick={() => handleCloseNavMenu(page)}
-      sx={{
-        my: 2,
-        color: "white",
-        display: "flex", // Change to flex for better alignment of content
-        alignItems: "center", // Vertically center the text and icon
-        fontFamily: "Edwin",
-      }}
-    >
-      {page}
-    </Button>
-  ))}
+            {pages.map((page) => (
+              <Button
+                key={page}
+                onClick={() => handleCloseNavMenu(page)}
+                sx={{
+                  my: 2,
+                  color: "white",
+                  display: "flex", // Change to flex for better alignment of content
+                  alignItems: "center", // Vertically center the text and icon
+                  fontFamily: "Edwin",
+                }}
+              >
+                {page}
+              </Button>
+            ))}
 
-  <Button
-    ref={anchorRef}
-    id="composition-button"
-    aria-controls={openOrchestraTab ? "composition-menu" : undefined}
-    aria-expanded={openOrchestraTab ? "true" : undefined}
-    aria-haspopup="true"
-    onClick={handleToggleOrchestraTab}
-    sx={{
-      my: 2,
-      color: "white",
-      display: "flex", // Use flex for consistent alignment
-      alignItems: "center", // Ensure vertical alignment of text and icon
-      fontFamily: "Edwin",
-    }}
-  >
-    Orchestra
-    <ExpandMoreIcon  /> {/* Add some left margin for spacing between text and icon */}
-  </Button>
-            
+            {/* This section is for the big screen where on pressing Orchestra tab it shows the Join, About Us and Events */}
+            <Button
+              ref={anchorRef}
+              id="composition-button"
+              aria-controls={openOrchestraTab ? "composition-menu" : undefined}
+              aria-expanded={openOrchestraTab ? "true" : undefined}
+              aria-haspopup="true"
+              onClick={handleToggleOrchestraTab}
+              sx={{
+                my: 2,
+                color: "white",
+                display: "flex", // Use flex for consistent alignment
+                alignItems: "center", // Ensure vertical alignment of text and icon
+                fontFamily: "Edwin",
+              }}
+            >
+              Orchestra
+              <ExpandMoreIcon />
+            </Button>
             <Popper
               open={openOrchestraTab}
               anchorEl={anchorRef.current}
@@ -330,7 +359,7 @@ function Navbar() {
                           About us
                         </MenuItem>
                         <MenuItem
-                          onClick={handleClose}
+                         onClick={() => navigate("/events")}
                           sx={{ color: "white", fontFamily: "Edwin" }}
                         >
                           Events

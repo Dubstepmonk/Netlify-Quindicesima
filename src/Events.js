@@ -20,6 +20,8 @@ function Events(){
 
         <Grid className="courses-section" container direction="row" justifyContent="center" textAlign="center">
         <h1>Events</h1>
+
+        {/* Consider using Material Ui Card Component */}
         </Grid>
 </Grid>
 )}

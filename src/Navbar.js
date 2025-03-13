@@ -155,7 +155,9 @@ function Navbar() {
         </ListItemButton>
         <Collapse in={openSubDrawer} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            <ListItemButton sx={{ pl: 4 }}>
+            <ListItemButton sx={{ pl: 4 }}
+             onClick={() => window.open("https://docs.google.com/forms/d/e/1FAIpQLScJr80TLJvQOlXpQnBGflr40TJzNwDpu-IMqPrbyWqurRRMzw/viewform", "_blank")}
+            >
               <ListItemIcon>
                 <Diversity1Icon style={{ color: "#cc7420" }} />
               </ListItemIcon>
@@ -347,7 +349,7 @@ function Navbar() {
                         sx={{ backgroundColor: "#282424" }}
                       >
                         <MenuItem
-                          onClick={handleClose}
+                          onClick={() =>  window.open("https://docs.google.com/forms/d/e/1FAIpQLScJr80TLJvQOlXpQnBGflr40TJzNwDpu-IMqPrbyWqurRRMzw/viewform", "_blank")}
                           sx={{ color: "white", fontFamily: "Edwin" }}
                         >
                           Join our Orchestra
